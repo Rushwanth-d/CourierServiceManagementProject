@@ -1,11 +1,9 @@
-FROM openjdk:8u151-jdk-alpine3.7
+FROM FROM tomcat:9-jdk17-openjdk-slim
 
 EXPOSE 2002
 
-ENV APP_HOME /usr/src/app
+COPY target/SpringBootWebMVCProject-0.0.1-SNAPSHOT.war app.war
 
-COPY target/shopping-cart-0.0.1-SNAPSHOT.jar $APP_HOME/app.jar
+WORKDIR /usr/local/tomcat/webapps
 
-WORKDIR $APP_HOME
-
-ENTRYPOINT exec java -jar app.jar
+CMD ["catalina.sh", "run"]
