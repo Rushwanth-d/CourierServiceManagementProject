@@ -1,4 +1,4 @@
-FROM FROM tomcat:9-jdk17-openjdk-slim
+FROM tomcat:9-jdk17-openjdk-slim
 
 EXPOSE 2002
 
