@@ -1,14 +1,18 @@
-# Use the OpenJDK 8 base image
-FROM openjdk:8-jdk-alpine
+# Use an official OpenJDK runtime as a parent image
+FROM openjdk:8-jre-alpine
 
-# Set the working directory in the container
+# set shell to bash
+# source: https://stackoverflow.com/a/40944512/3128926
+RUN apk update && apk add bash
+
+# Set the working directory to /app
 WORKDIR /app
 
-# Copy the Maven Wrapper JAR into the container
-COPY .mvn/wrapper/maven-wrapper.jar /app/maven-wrapper.jar
+# Copy the fat jar into the container at /app
+COPY /target/SpringBootWebMVCProject-0.0.1-SNAPSHOT.war /app
 
-# Expose the port your application runs on (if necessary)
+# Make port 8080 available to the world outside this container
 EXPOSE 8080
 
-# Command to run Maven Wrapper
-CMD ["java", "-jar", "/app/maven-wrapper.jar"]
+# Run jar file when the container launches
+CMD ["java", "-jar", "SpringBootWebMVCProject-0.0.1-SNAPSHOT.war"]
