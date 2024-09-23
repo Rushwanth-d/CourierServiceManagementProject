@@ -1,9 +1,14 @@
-FROM tomcat:9-jdk17-openjdk-slim
+# Use a base image with JRE
+FROM openjdk:11-jre-slim
 
-EXPOSE 2002
+# Set the working directory
+WORKDIR /app
 
-COPY target/SpringBootWebMVCProject-0.0.1-SNAPSHOT.war app.war
+# Copy the WAR file into the container
+COPY target/SpringBootWebMVCProject-0.0.1-SNAPSHOT.war /app/app.war
 
-WORKDIR /usr/local/tomcat/webapps
+# Expose the port the application runs on
+EXPOSE 8080
 
-CMD ["catalina.sh", "run"]
+# Command to run the application
+CMD ["java", "-jar", "/app/app.war"]
