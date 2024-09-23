@@ -107,10 +107,10 @@
         <id>maven-releases</id>
         <url>http://3.144.69.141:8081/repository/maven-releases/</url>
    </repository>
- <snapshotrepository>
+ <snapshotRepository>
          <id>maven-snapshots</id>
         <url>http://3.144.69.141:8081/repository/maven-snapshots/</url>
-   </snapshotrepository>
+   </snapshotRepository>
 </distributionManagement>
 
 </project>
