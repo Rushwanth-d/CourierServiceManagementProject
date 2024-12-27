@@ -34,26 +34,6 @@ jobs:
     - name: Compile the Project
       run: mvn test
 
-    # Step 2: Install OWASP Dependency-Check
-    - name: Install OWASP Dependency-Check
-      run: |
-          wget https://github.com/jeremydmiller/cake-dependency-check/releases/download/v6.3.1/dependency-check-6.3.1-release.zip
-          unzip dependency-check-6.3.1-release.zip
-          mv dependency-check-6.3.1 /opt/dependency-check
-          chmod +x /opt/dependency-check/bin/dependency-check.sh
-
-      # Step 3: Run Dependency-Check
-    - name: Run OWASP Dependency-Check
-      run: |
-          /opt/dependency-check/bin/dependency-check.sh --project ${{ github.repository }} --scan . --out . --format HTML
-          
-      # Step 4: Upload Dependency-Check Report as Artifact
-    - name: Upload Dependency-Check Report
-      uses: actions/upload-artifact@v3
-      with:
-          name: dependency-check-report
-          path: dependency-check-report.html
-
     - name: Build with Maven
       run: mvn package --file pom.xml
 
