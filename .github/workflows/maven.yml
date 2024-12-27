@@ -45,7 +45,7 @@ jobs:
       # Step 3: Run Dependency-Check
     - name: Run OWASP Dependency-Check
       run: |
-          /opt/dependency-check/bin/dependency-check.sh --project ${{ CourierServiceManagementProject }} --scan . --out . --format HTML
+          /opt/dependency-check/bin/dependency-check.sh --project ${{ github.repository }} --scan . --out . --format HTML
           
       # Step 4: Upload Dependency-Check Report as Artifact
     - name: Upload Dependency-Check Report
