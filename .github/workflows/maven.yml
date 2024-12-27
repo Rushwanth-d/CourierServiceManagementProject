@@ -32,7 +32,7 @@ jobs:
       run: mvn compile
 
     - name: Compile the Project
-      run: mvn test DskipTests=true
+      run: mvn test
 
     # Step 2: Install OWASP Dependency-Check
     - name: Install OWASP Dependency-Check
