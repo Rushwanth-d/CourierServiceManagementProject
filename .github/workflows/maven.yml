@@ -69,6 +69,16 @@ jobs:
     
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+
+    - name: Install OWASP Dependency-Check
+      run: |
+          curl -sSL https://github.com/jeremylong/DependencyCheck/releases/download/v6.5.0/dependency-check-6.5.0-release.zip -o dependency-check.zip
+          unzip dependency-check.zip -d dependency-check
+          export PATH=$PATH:$PWD/dependency-check/bin
+
+    - name: Run OWASP Dependency-Check
+      run: |
+          dependency-check --project "CourierServiceManagementProject" --scan . --out .dependency-check-report
     
     - name: Build the Docker_file
       run: docker build -t rushwanthd/courier_image:latest . 
