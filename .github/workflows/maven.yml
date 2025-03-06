@@ -81,8 +81,8 @@ jobs:
           #dependency-check --project "CourierServiceManagementProject" --scan . --out .dependency-check-report
     
     - name: Build the Docker_file
-      run: docker build -t rushwanthd/courier_image:latest . 
+      run: docker build -t rushwanthd/courier_image:v1 . 
 
     - name: Push the Docker_Image to Docker_Hub
-      run: docker push rushwanthd/courier_image:latest
+      run: docker push rushwanthd/courier_image:v1 
       
